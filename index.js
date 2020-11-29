@@ -3,7 +3,6 @@ const crypto = require("crypto");
 const WebSocket = require('ws')
 const prompt = require('prompt-sync')();
 
-
 async function create_order() {
 
     try {
@@ -28,13 +27,13 @@ async function create_order() {
                     recvWindow = '5000'
                 }
                 const querystring = "symbol=LTCBTC&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.1&price=0.004&recvWindow=" + recvWindow + "&timestamp=" + Date.now()
-                    // const querystring = 'symbol=' + symbol.toUpperCase() + '&side=' + side.toUpperCase() + '&type=' + type.toUpperCase() + '&timeInForce=GTC&quantity=' + quantity + '&price=' + price + '&recvWindow=' + recvWindow + '&timestamp=' + Date.now()
-                const hash = crypto.createHmac("sha256", 'wbA3hCx9yztZRMxuIhqsl9242FtZwkhAaut4W2XORtpy9rHFou9Eefn3VmxUJpGC')
+                    //hashing the query string for api's signature
+                const signature = crypto.createHmac("sha256", 'wbA3hCx9yztZRMxuIhqsl9242FtZwkhAaut4W2XORtpy9rHFou9Eefn3VmxUJpGC')
                     .update(querystring.toString())
                     .digest('hex')
                     // api post request to create a new order
                 const result = await axios.request({
-                    url: "https://testnet.binance.vision/api/v3/order?" + querystring + "&signature=" + hash,
+                    url: "https://testnet.binance.vision/api/v3/order?" + querystring + "&signature=" + signature,
                     method: "POST",
                     headers: {
                         "X-MBX-APIKEY": "3mlL812V0wRDUjrU2T6y9Y6h40hHVtjej57PEYDfu4QhGwAzHOnERjhYuL2ZGowM"
@@ -42,7 +41,8 @@ async function create_order() {
                 })
                 console.log(result.data)
             } catch (err) {
-                console.log(err)
+                console.log(err.response.data)
+                ws.close()
             }
 
         });
@@ -58,8 +58,6 @@ async function create_order() {
         console.log(err)
     }
 }
-
-
 
 
 create_order();

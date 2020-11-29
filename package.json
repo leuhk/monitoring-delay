@@ -1,17 +1,17 @@
 {
-  "name": "binance-challenge",
-  "version": "1.0.0",
-  "description": "monitoring",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^0.21.0",
-    "crypto": "^1.0.1",
-    "prompt-sync": "^4.2.0",
-    "ws": "^7.4.0"
-  }
+    "name": "binance-challenge",
+    "version": "1.0.0",
+    "description": "monitoring",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "author": "Jackal Leung",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.21.0",
+        "crypto": "^1.0.1",
+        "prompt-sync": "^4.2.0",
+        "ws": "^7.4.0"
+    }
 }
