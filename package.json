@@ -6,11 +6,12 @@
     "scripts": {
         "start": "node index.js"
     },
-    "author": "Jackal Leung",
+    "author": "",
     "license": "ISC",
     "dependencies": {
         "axios": "^0.21.0",
         "crypto": "^1.0.1",
+        "fs": "0.0.1-security",
         "prompt-sync": "^4.2.0",
         "ws": "^7.4.0"
     }
