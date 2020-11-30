@@ -15,8 +15,6 @@ $ npm start
 
 ```
 
-
-
 # Project overview
 
 This project purpose is to monitor the `executionReport` delay after submitting an order to binance
@@ -26,7 +24,9 @@ This project purpose is to monitor the `executionReport` delay after submitting 
 2. create a new web socket connection to listen to User Data Streams
 3. submit an order through api while web socket is opened
 4. websocket return `executionReport` Event time if an order is matched
+5. the execution data is saved as a new JSON file.
 
 ### Please note
-- The `recvWindow` parameters must be a number within the range 800-60000, if the value is left undefined or out of the range, the value will be set to 5000 by default
-- For this demo purpose, I have hard code the api keys to submit order with symbol = LTCBTC, side = SELL, type = LIMIT, timeInForce = GTC, quantity = 0.1, price =0.004
+- If parameters is not entered, default value will be used where symbol = LTCBTC, side = SELL, type = LIMIT, timeInForce = GTC, quantity = 0.1, price =0.004
+- enter 'e' to exit program anytime
+- the return data will be display on screen and save as a new JSON file.
